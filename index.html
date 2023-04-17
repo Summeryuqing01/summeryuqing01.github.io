@@ -1,19 +1,30 @@
 <!DOCTYPE html>
 <html>
+
+<head>
 <style>
 	img{
 		display: block;
 		margin-left: auto;
 		margin-right: auto;
 	}
-	blink{
-		color: #2d38be;
-		font-size: 15px;
+	#blink {
+		font-size: 20px;
 		font-weight: bold;
+		color: #2d38be;
+		transition: 0.5s;
 	}
 </style>
+</head>
+
 <body>
-	<blink>Why would somebody use this?</blink> 
+	 <p id="blink"> This is an example of blinking text using JS. </p>
+	 <script type="text/javascript">
+	 	var blink = document.getElementById('blink');
+	 	setInterval(function() {
+	 		blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
+	 	}, 1500);
+	 </script>
 	<h1><center>HELLO WORLD</center></h1>
 	<p><center>(っ´ω`)ﾉ(╥ω╥)	</center></p>
 	<p><center>This is Summer's GitHub Pages.</center></p>
