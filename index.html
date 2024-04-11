@@ -1,47 +1,93 @@
 <!DOCTYPE html>
 <html>
-
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <style>
-	img{
-		display: block;
-		margin-left: auto;
-		margin-right: auto;
-	}
-	#blink {
-		font-size: 40px;
-		font-weight: bold;
-		color: #2d38be;
-		transition: 0.5s;
-	}
-	p{
-		color: white;
-		font-size: 30px;
-		text-align: center;
-	}
-	.bottomleft {
-		position: absolute;
-		bottom: 8px;
-		left: 16px;
-	}
-	
+* {box-sizing: border-box}
+
+/* Set height of body and the document to 100% */
+body, html {
+  height: 100%;
+  margin: 0;
+  font-family: Arial;
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #555;
+  color: white;
+  float: left;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  padding: 14px 16px;
+  font-size: 17px;
+  width: 25%;
+}
+
+.tablink:hover {
+  background-color: #777;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+#Home {background-color: black;}
+#Projects {background-color: black;}
+#Contact {background-color: black;}
+#Random {background-color: black;}
 </style>
 </head>
+<body>
 
-<body style= "background-color:black;">
-	 <h1 id="blink"><center> HELLO WORLD </center></h1>
-	 <script type="text/javascript">
-	 	var blink = document.getElementById('blink');
-	 	setInterval(function() {
-	 		blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
-	 	}, 1000);
-	 </script>
-	<p>(っ´ω`)ﾉ(╥ω╥)</p>
-	<p>This is Summer's Page.</p>
-	<p>(´･д･｀): …φ(。。*)</p>
-	<a href="https://youtu.be/Hmc41Zsb2Ns "> What's been playing in my head non-stop</a>
+<button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
+<button class="tablink" onclick="openPage('Projects', this, 'red')" id="defaultOpen">Projects</button>
+<button class="tablink" onclick="openPage('Contact', this, 'red')">Contact</button>
+<button class="tablink" onclick="openPage('Random', this, 'red')">About</button>
 
-	<img src="/img/IMG_0651.JPG" class = "center">
-	<img src= "/img/catplay.gif" class = "bottomleft">
+<div id="Home" class="tabcontent">
+  <h3>Home</h3>
+  <p>I am Summua!</p>
+</div>
+
+<div id="Projects" class="tabcontent">
+  <h3>Projects</h3>
+  <p>My Projects!</p> 
+</div>
+
+<div id="Contact" class="tabcontent">
+  <h3>Contact</h3>
+  <p>Linkedin</p>
+</div>
+
+<div id="Random" class="tabcontent">
+  <h3>Random</h3>
+  <p>heheh</p>
+</div>
+
+<script>
+function openPage(pageName,elmnt,color) {
+  var i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("tabcontent");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
+  }
+  tablinks = document.getElementsByClassName("tablink");
+  for (i = 0; i < tablinks.length; i++) {
+    tablinks[i].style.backgroundColor = "";
+  }
+  document.getElementById(pageName).style.display = "block";
+  elmnt.style.backgroundColor = color;
+}
+
+// Get the element with id="defaultOpen" and click on it
+document.getElementById("defaultOpen").click();
+</script>
+   
 </body>
-</html>
+</html> 
