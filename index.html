@@ -14,60 +14,60 @@ body, html {
 
 /* Style tab links */
 .tablink {
-  background-color: #555;
-  color: white;
+  background-color: #5F9EA0;
+  color: black;
   float: left;
   border: none;
   outline: none;
   cursor: pointer;
   padding: 14px 16px;
   font-size: 17px;
-  width: 25%;
+  width: 33.333333%;
 }
 
 .tablink:hover {
-  background-color: #777;
+  background-color: darkcyan;
 }
 
 /* Style the tab content (and add height:100% for full page content) */
 .tabcontent {
-  color: white;
+  color: black;
   display: none;
   padding: 100px 20px;
   height: 100%;
 }
 
-#Home {background-color: black;}
-#Projects {background-color: black;}
-#Contact {background-color: black;}
-#Random {background-color: black;}
+#About {background-color: baige;}
+#Projects {background-color: baige;}
+#Random {background-color: baige;}
 </style>
 </head>
 <body>
 
-<button class="tablink" onclick="openPage('Home', this, 'red')">Home</button>
-<button class="tablink" onclick="openPage('Projects', this, 'red')" id="defaultOpen">Projects</button>
-<button class="tablink" onclick="openPage('Contact', this, 'red')">Contact</button>
-<button class="tablink" onclick="openPage('Random', this, 'red')">About</button>
+<button class="tablink" onclick="openPage('About', this, 'darkcyan')" id="defaultOpen">About</button>
+<button class="tablink" onclick="openPage('Projects', this, 'darkcyan')">Projects</button>
+<button class="tablink" onclick="openPage('Random', this, 'darkcyan')">Random</button>
 
-<div id="Home" class="tabcontent">
-  <h3>Home</h3>
-  <p>I am Summua!</p>
+<div id="About" class="tabcontent">
+  <h3>About</h3>
+  <p>Hello, I'm Summer. I am a student at Northwestern MSDS program specialized in Artificial Intelligence. </p>
+  <h3>Some Links</h3>
+  <p><a href="https://www.linkedin.com/in/summer-xia-172766195/">Linkedin</a></p>
+  <p><a href="https://github.com/Summeryuqing01">GitHub</a></p>
 </div>
 
 <div id="Projects" class="tabcontent">
   <h3>Projects</h3>
-  <p>My Projects!</p> 
+  <h4>2024:</h4> 
+  <h4>2023:</h4>
+  <h4>2022:</h4>
+  <h4>2021:</h4> 
 </div>
 
-<div id="Contact" class="tabcontent">
-  <h3>Contact</h3>
-  <p><a href="https://www.linkedin.com/in/summer-xia-172766195/">Linkedin</a></p>
-</div>
 
 <div id="Random" class="tabcontent">
   <h3>Random</h3>
-  <p>heheh</p>
+  <p><a href="https://stat.ink/@umikome/spl3">My Splat Log</a></p>
 </div>
 
 <script>
