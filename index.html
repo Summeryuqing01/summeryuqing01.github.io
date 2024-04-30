@@ -37,6 +37,20 @@ body, html {
   height: 100%;
 }
 
+.pdf {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+    }
+
+.pdf,
+html,
+body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+
 #About {background-color: baige;}
 #Projects {background-color: baige;}
 #Random {background-color: baige;}
@@ -51,6 +65,12 @@ body, html {
 <div id="About" class="tabcontent">
   <h3>About</h3>
   <p>Hello, I'm Summer. I am a student at Northwestern MSDS program specialized in Artificial Intelligence. </p>
+  <h3>My Resume</h3>
+  <object class="pdf" 
+  data= 'img/resume-a.pdf'
+  width="800"
+  height="500">
+</object>
   <h3>Some Links</h3>
   <p><a href="https://www.linkedin.com/in/summer-xia-172766195/">Linkedin</a></p>
   <p><a href="https://github.com/Summeryuqing01">GitHub</a></p>
@@ -58,7 +78,9 @@ body, html {
 
 <div id="Projects" class="tabcontent">
   <h3>Projects</h3>
-  <h4>2024:</h4> 
+  <h4>2024:</h4>
+  <p>Neural Networks: Learning neural network architectures with experiments.(Including CNN, RNN, LSTM, etc)</p>
+  <p><a href="https://github.com/Summeryuqing01/Neural-Net-Experiments">Github link</a></p>
   <h4>2023:</h4>
   <h4>2022:</h4>
   <h4>2021:</h4> 
