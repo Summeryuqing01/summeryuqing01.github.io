@@ -29,10 +29,11 @@ p {
 }
 
 .center {
-  display: block;
+  display: flex;
   margin-left: auto;
   margin-right: auto;
-  width: 50%;
+  justify-content: center;
+  align-items: center;;
 }
 
 .row {
@@ -47,6 +48,12 @@ p {
   padding-left: 80px;
 }
 
+
+#detonate{
+  font-size: medium;
+  height: 30px;
+  width: 80px;
+}
 /* Create three equal columns that sits next to each other */
 .column {
   flex: 20%;
@@ -208,9 +215,14 @@ p {
           <br>
           <a href="https://www.goodreads.com/umikomedesu">Goodreads</a> <br>
           <br>
-          <a href = "https://linktr.ee/summerpewpew">Linktree</a></p>
+          <a href = "https://linktr.ee/summerpewpew">Linktree</a>
           <br>
+          <a href = "https://roadmap.sh/ai-data-scientist">Data Science Roadmap</a>
+        </p>
         </div>
+        <br>
+        <br>
+        <button id = "detonate" class= "center">Detonate</button>
       </div>
     </div>
   </div>
