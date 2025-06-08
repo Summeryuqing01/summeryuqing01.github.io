@@ -1,39 +1,178 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta charset="UTF-8" />
-<link rel="stylesheet" href="https://unpkg.com/98.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://unpkg.com/98.css" />
+</head>
 
 <style>
-.pdf {
-        width: 100%;
-        aspect-ratio: 4 / 3;
-    }
+* {
+  box-sizing: border-box;
+}
 
-.pdf,
-html,
+/* Set a background color */
 body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-    }
+  background-color: #474e5d;
+  font-family: Helvetica, sans-serif;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline {
+  position: relative;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* The actual timeline (the vertical ruler) */
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 6px;
+  background-color: white;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -3px;
+}
+
+/* Container around content */
+.container {
+  padding: 10px 40px;
+  position: relative;
+  background-color: inherit;
+  width: 50%;
+}
+
+/* The circles on the timeline */
+.container::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 25px;
+  right: -17px;
+  background-color: white;
+  border: 4px solid #FF9F55;
+  top: 15px;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+/* Place the container to the left */
+.left {
+  left: 0;
+}
+
+/* Place the container to the right */
+.right {
+  left: 50%;
+}
+
+/* Add arrows to the left container (pointing right) */
+.left::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  right: 30px;
+  border: medium solid white;
+  border-width: 10px 0 10px 10px;
+  border-color: transparent transparent transparent white;
+}
+
+/* Add arrows to the right container (pointing left) */
+.right::before {
+  content: " ";
+  height: 0;
+  position: absolute;
+  top: 22px;
+  width: 0;
+  z-index: 1;
+  left: 30px;
+  border: medium solid white;
+  border-width: 10px 10px 10px 0;
+  border-color: transparent white transparent transparent;
+}
+
+/* Fix the circle for containers on the right side */
+.right::after {
+  left: -16px;
+}
+
+/* The actual content */
+.content {
+  padding: 20px 30px;
+  background-color: white;
+  position: relative;
+  border-radius: 6px;
+}
+
+/* Media queries - Responsive timeline on screens less than 600px wide */
+@media screen and (max-width: 600px) {
+/* Place the timelime to the left */
+  .timeline::after {
+    left: 31px;
+  }
+
+/* Full-width containers */
+  .container {
+    width: 100%;
+    padding-left: 70px;
+    padding-right: 25px;
+  }
+
+/* Make sure that all arrows are pointing leftwards */
+  .container::before {
+    left: 60px;
+    border: medium solid white;
+    border-width: 10px 10px 10px 0;
+    border-color: transparent white transparent transparent;
+  }
+
+/* Make sure all circles are at the same spot */
+  .left::after, .right::after {
+    left: 15px;
+  }
+
+/* Make all right containers behave like the left ones */
+  .right {
+    left: 0%;
+  }
+}
+aside {
+    width: 250px;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    padding: 8px;
+    display: flex
+;
+    align-items: stretch;
+}
+
 
 p {
   font-size: 16px;
-  
 }
 
-#window-body3{
-  height: 100vh;
+html {
+   margin: 0px;
+   height: 100%;
+   width: 100%;
 }
 
-.center {
-  display: flex;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: center;
-  align-items: center;;
+main {
+    width: 65rem;
+    margin-left: 240px;
+    margin-bottom: 60px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: #c0c0c0;
 }
 
 .row {
@@ -41,116 +180,175 @@ p {
 }
 
 #div-link{
-  border: 3px solid black;
+  border: 3px solid rgb(185, 170, 170);
   padding-top: 50px;
   padding-right: 30px;
   padding-bottom: 50px;
   padding-left: 80px;
 }
-
-
-#detonate{
-  font-size: medium;
-  height: 30px;
-  width: 80px;
-}
-/* Create three equal columns that sits next to each other */
 .column {
-  flex: 20%;
+  flex: 30%;
   padding: 5px;
 }
-
-.test{
-  height:40px;
-  width:100px;
-  font-size: larger;
+.row {
+  display: flex;
 }
+
 </style>
 
-</head>
+<body>
 
-<body> 
+<aside>
+<ul class="tree-view">
+  <li style="font-size:25px"> Menu
+    <ul>
+      <li style="font-size:20px">
+        <a href="#about">About</a></li>
+      <li style="font-size:20px">
+        <a href="#skills">Skills</a></li>
+      <li style="font-size:20px">
+        <a href="#experience">Experience</a></li>
+      <li style="font-size:20px">
+        <a href="#education">Education</a></li>
+      <li style="font-size:20px">
+        <a href="#projects">Projects</a></li>
+      <li style="font-size:20px">
+        <a href="#contact">Contact Me</a></li>
+    </ul>
+  </li>
+</ul>
+</aside>
 
-  <div class="tabs">
-    <div role="tablist" aria-label="Sample Tabs">
-      <button
-        role="tab"
-        class = "test"
-        aria-selected="true"
-        aria-controls="panel-1"
-        id="tab-1"
-        tabindex="0">
-        About
-      </button>
-      <button
-        role="tab"
-        class = "test"
-        aria-selected="false"
-        aria-controls="panel-2"
-        id="tab-2"
-        tabindex="-1">
-        Projects
-      </button>
-      <button
-        role="tab"
-        class = "test"
-        aria-selected="false"
-        aria-controls="panel-3"
-        id="tab-3"
-        tabindex="-1">
-        Random
-      </button>
+<main>
+  <h1>Summer's Page </h1>
+  <hr>
+  <h2 id = 'about'>About</h2>
+  <div class="window" style="width: 400px">
+  <div class="title-bar">
+    <div class="title-bar-text"></div>
+    <div class="title-bar-controls">
+      <button aria-label="Close"></button>
     </div>
-
-    <div class="window" id="panel-1" role="tabpanel" tabindex="0" aria-labelledby="tab-1">
-      <div class="window-body">
-        <h3>About</h3>
-        <audio controls autoplay>
-          <source src="audio/Pinapple Rag Techno Remake.mp3" type="audio/mpeg">
-        Your browser does not support the audio element.
-        </audio>
-        <p>Hello, I'm Summer. <br>
-          <a href="https://www.linkedin.com/in/summer-xia-172766195/">Connect on Linkedin</a></p><br>
-          <br>
-          <br>
-          <a href = "https://youtu.be/JPgjTU5U52c?si=85COzDOklkeTy1pC"><img align = "right" src="img/creature.png" alt="yippeee" style="width:60px;height:60px;"></a>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-          <br>
-      </div>
-    </div>
-
-    <div class="window" id="panel-2" role="tabpanel" tabindex="0" aria-labelledby="tab-2" hidden>
-      <div class="window-body">
-        <h3>Projects</h3>
-        <p><a href="https://github.com/Summeryuqing01">See all my projects on GitHub</a></p><br>
-        <br>
-        <div class="row">
+  </div>
+  <div class="window-body">
+    <p>Summer is a data science enthusiast with 
+      hands-on experience in machine learning, data visualization, and cloud platforms. </p>
+  </div>
+</div>
+  <hr>
+  <h2 id = 'skills'>Skills</h2>
+  <div class="row">
           <div class="column">
-            <img src="img/pixel_heart.gif" alt="" style="width:30px;height:30px;">
+            <img src="img/logo-python-icon-506x512-t38ct41x.png" alt="" style="height: 40px;width: 40px;">
           </div>
           <div class="column">
-            <img src="img/pixel_heart.gif" alt="" style="width:30px;height:30px;">
+            <img src="img/R_logo.svg.png" alt="" style="height: 40px;width: 60px;">
           </div>
           <div class="column">
-            <img src="img/pixel_heart.gif" alt="" style="width:30px;height:30px;">
-          </div>
-          <div class="column">
-            <img src="img/pixel_heart.gif" alt="" style="width:30px;height:30px;">
-          </div>
-          <div class="column">
-            <img src="img/pixel_heart.gif" alt="" style="width:30px;height:30px;">
+            <img src="img/4299956.png" alt="" style="height: 50px;width: 50px;">
           </div>
         </div>
-      
-        <hr>
-        <h4>2024:</h4>
+  <p> Programming Languages: </p>
+    <ul>
+      <li><b>R</b> (packages: shiny, dplyr, ggplot, etc.) </li>
+      <li><b>Python</b> (packages: pandas, matplotlib, seaborn
+    Pytorch, NumPy, SciPy, Keras, TensorFlow, PySpark, etc)</li> 
+      <li><b>SQL</b></li>
+      </ul>
+  <p> Technical Tools:</p>
+  <ul>
+    <li>Databases: MongoDB, PostgreSQL, Dbeaver, Neo4j</li>
+    <li>Data visualization: PowerBI</li>
+    <li>Cloud based platform: AWS, Databricks, Google Cloud Platform, Alicloud</li>
+    <li>Other: Excel (VLOOKUP), KNIME (KNIME Python integration), Godot, SAS, Celonis (process mining), Docker
+  </li>
+  <hr>
+  <h2 id = 'experience'>Experience</h2>
+  <div class="timeline">
+    <div class="container left">
+    <div class="content">
+      <h3>2025/1-</h3>
+      <p>Washington University in St. Louis	Research Data Analyst (Jan.2025-Present)</p>
+      <ul>
+        <li>REACT-APAC (Societal Resilience: Analysis of Concurrent Threats in the Asia Pacific Region):
+Data Visualization: Create interactive dashboards to show the timeline of disasters by utilizing Shiny for Python. Mapping disaster data with geoPython.
+Data Reporting: Present the visualizations to PIs and other stakeholders.
+</li>
+        <li>Goualougo Triangle Ape Project:
+Trained an open source wild animal identification model with camera trap data, achieved overall 85% accuracy with species of interest..
+</li>
+        <li>
+          St Louis Dashboard:
+On Google Cloud Platform, develop an ETL data pipeline to automate the data transformation and validation process, 
+accompanied with an admin user interface for no code customization of the ETL pipeline. 
+        </li></ul>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h3>2024/9-2024/12</h3>
+      <p>Northwestern University	Teaching Assistant (Sept.2024- Dec.2024)</p>
+      <ul>
+        <li>Applied Statistics with R, Database Systems, Practical Machine Learning</li>
+        <li>
+          Holding sessions to provide additional help and answer questions. 
+          Explaining course material and concepts to students. 
+          Organizing and overseeing group discussions or projects.
+        </li>
+       </ul>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h3>2024/6-2024/8</h3>
+      <p>Baker Tilly 	Data Scientist Intern (June.2024-Aug.2024)</p>
+      <ul>
+        <li>Developed performance metrics to identify underutilized offices, 
+          used geospatial data in Python to analyze the effect of office location on office 
+          utilization by employees, projected to improve the cost efficiency by 10% </li>
+        <li>Data validation and testing. Data storytelling with visualizations in PowerBI 
+        </li>
+       </ul>
+    </div>
+  </div>
+  <div class="container right">
+    <div class="content">
+      <h3>2024/3-2024/10</h3>
+      <p>Realix AI	  Data Scientist Intern (March.2024-Oct.2024)</p>
+      <ul>
+        <li>Prompt engineering: Fine tune training model (LLM), increased the BLEU score by 20%</li>
+        <li>Text processing and data cleaning, version control, seed transcript generation. Designed and created automated ETL pipeline using AWS SDK for Python, 
+          transforming raw user conversation data into ready for use training data. 
+        </li>
+       </ul>
+    </div>
+  </div>
+  <div class="container left">
+    <div class="content">
+      <h3>2022</h3>
+      <p>ARK.IO	  Data Analyst Intern (Jul.2022-Sep.2022)</p>
+      <ul>
+        <li>Monitored and managed AlibabaCloud database (memory and CPU utilizations, indexes, etc), 
+          retrieved and updated data using SQL queries</li>
+        <li>Generated timely reports on user and post data with Tableau</li>
+        <li>Determined the most active users and created banners for them to boost user interaction and stored the data to cloud for future analysis
+        </li></ul>
+    </div>
+  </div>
+</div>
+  <hr>
+  <h2 id = 'education'>Education</h2>
+  <img src="img/Northwestern_University_seal.svg.png" alt="" style="height: 100px;width: 100px;">
+  <p> Northwestern University, Chicago, IL</p>
+  <p>M.S. Data Science with Specialization in AI, Sep.2023-Aug.2024 </p>
+  <img src="img/UC_Santa_Barbara_Seal.png" alt="" style="height: 100px;width: 100px;">
+  <p>University of California, Santa Barbara, Santa Barbara, CA</p>
+  <p>Major: Statistics and Data Science | Minor: Labor Studies, Sep.2019-June.2023</p>
+  <hr>
+  <h2 id = 'projects'>Projects</h2>
+  <h4>2024:</h4>
         <p><b>Neural Networks:</b> Learning neural network architectures with experiments.(Including CNN, RNN, LSTM, etc)
           <a href="https://github.com/Summeryuqing01/Neural-Net-Experiments">[link]</a></p>
-          <hr>
         <h4>2023:</h4>
         <p><b>German Credit Risk:</b>The primary objective of this project is to develop a predictive model using the German credit risk dataset that can accurately
           forecast the credit amount that potential borrowers are likely to receive.
@@ -160,7 +358,6 @@ p {
            I would like to see the student demographic and performance by location. I am hoping to learn if the school's 
            location and student body affect the schools' college enrollmen rate.
           <a href="https://github.com/Summeryuqing01/Python_EDA_Chicago_Schools">[link]</a> <br>
-          <hr>
         </p>
         <h4>2022:</h4>
         <p><b>Survival Analysis of Political Leaders:</b>
@@ -190,105 +387,15 @@ p {
           the best model with the lowest AICc for the time series is 
           a seasonal ARIMA model with (p, d, q)×(P, D, Q) = (1, 0, 1)×(1, 1, 2).
           <a href="https://github.com/Summeryuqing01/Time-Series-Analysis">[link]</a> <br>
-          <hr>
         </p>
-        <h4>2021:</h4>
-        <br>
-        <br>
-      </div>
-    </div>
-
-    <div class="window" id="panel-3" role="tabpanel" tabindex="0" aria-labelledby="tab-3" hidden>
-      <div class="window-body" id = 'window-body3'>
-        <img src="img/sparkle.gif" alt="sparkle" style="width:100px;height:120px;" class="center">
-        <div id =  "div-link">
-        <p style="font-size: medium;"><a href="https://stat.ink/@umikome/spl3">SplatLog</a> <br>
-          <br>
-          <a href="https://www.goodreads.com/umikomedesu">Goodreads</a> <br>
-          <br>
-          <a href = "https://letterboxd.com/umikome/">letterboxd</a> <br>
-          <br>
-          <a href = "https://medium.com/@summeryuqing">Medium</a> <br>
-          <br>
-          <a href = "https://linktr.ee/summerpewpew">Linktree</a> <br>
-          <br>
-          <a href = "https://roadmap.sh/ai-data-scientist">Data Science Roadmap</a>
-          <br>
-        </p>
-        </div>
-        <br>
-        <br>
-        <button id = "detonate" class= "center">Detonate</button>
-      </div>
-    </div>
+  <hr>
+  <h2 id = 'contact'>Contact Me</h2>
+  <div class="row">
+  <a href = 'https://www.linkedin.com/in/summer-xia-172766195/'><img align = "left" src="img/linkedin-with-circle-icon-512x512-cvyrro5n.png" alt="Linkedin" style="width:60px;height:60px;"></a>
+  <a href = 'https://github.com/Summeryuqing01'><img src="img/25231.png" alt="GitHub" style="width:55px;height:55px;"></a>
   </div>
-  
-
-<script>
-window.addEventListener("DOMContentLoaded", () => {
-  const tabs = document.querySelectorAll('[role="tab"]');
-  const tabList = document.querySelector('[role="tablist"]');
-
-  // Add a click event handler to each tab
-  tabs.forEach((tab) => {
-    tab.addEventListener("click", changeTabs);
-  });
-
-  // Enable arrow navigation between tabs in the tab list
-  let tabFocus = 0;
-
-  tabList.addEventListener("keydown", (e) => {
-    // Move right
-    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
-      tabs[tabFocus].setAttribute("tabindex", -1);
-      if (e.key === "ArrowRight") {
-        tabFocus++;
-        // If we're at the end, go to the start
-        if (tabFocus >= tabs.length) {
-          tabFocus = 0;
-        }
-        // Move left
-      } else if (e.key === "ArrowLeft") {
-        tabFocus--;
-        // If we're at the start, move to the end
-        if (tabFocus < 0) {
-          tabFocus = tabs.length - 1;
-        }
-      }
-
-      tabs[tabFocus].setAttribute("tabindex", 0);
-      tabs[tabFocus].focus();
-    }
-  });
-});
-
-function changeTabs(e) {
-  const target = e.target;
-  const parent = target.parentNode;
-  const grandparent = parent.parentNode;
-
-  // Remove all current selected tabs
-  parent
-    .querySelectorAll('[aria-selected="true"]')
-    .forEach((t) => t.setAttribute("aria-selected", false));
-
-  // Set this tab as selected
-  target.setAttribute("aria-selected", true);
-
-  // Hide all tab panels
-  grandparent
-    .querySelectorAll('[role="tabpanel"]')
-    .forEach((p) => p.setAttribute("hidden", true));
-
-  // Show the selected panel
-  grandparent.parentNode
-    .querySelector(`#${target.getAttribute("aria-controls")}`)
-    .removeAttribute("hidden");
-}
-
-</script>
+</main>  
 
 </body>
-
 
 </html>
